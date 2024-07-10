@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   New Perspectives on XML
+   Tutorial 4
+   Case Problem 4
+
+   South Racing cars list
+   Author:  Kelly Martinez
+   Date:   6/16/2024 
+
+   Filename:         teams.xsd
+   Supporting Files: 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://example.com/teams"
+            xmlns="http://example.com/teams"
+            xmlns:car="http://example.com/cars"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+<xs:import namespace="http://example.com/cars" schemaLocation="cars.xsd"/>
+
+<xs:element name="compoundDoc">
+    <xs:complexType>
+        <xs:sequence>
+           <xs:element name="teams">
+               <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="team" maxOccurs="unbounded">
+                           <xs:complexType>
+                             <xs:sequence>
+                              <xs:element name="title" type="xs:string"/>
+                              <xs:element name="description" type="xs:string"/>
+                              <xs:element name="series" type="xs:string"/>
+                              <xs:element ref="car:cars"/>
+                             </xs:sequence>
+                             <xs:attribute name="tid" type="xs:string" use="required"/>
+                            </xs:complexType>
+                          </xs:element>
+                      </xs:sequence>
+                  </xs:complexType>
+              </xs:element>
+          </xs:sequence>
+      </xs:complexType>
+</xs:element>           
+
+</xs:schema>
